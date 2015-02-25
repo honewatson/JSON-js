@@ -1,0 +1,7 @@
+The double backslash escape character broke the JSON functionality for ExactTarget / Salesforce Marketing Cloud Server-Side Javascript.
+
+The one line with the double backslash escape character has been removed for this to work in the ExactTarget Jint based environment.
+
+Jint is a C# based javascript interpreter.
+
+Booleans should be in lowercase format eg true/false
