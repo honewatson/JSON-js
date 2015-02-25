@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script>var data = {"fields":[{"Name":"last_name","ObjectID":"6d4a3255-4acf-44cd-a03d-9e63eb0244e1","FieldType":"Text","IsPrimaryKey":false,"MaxLength":50,"Ordinal":2,"DefaultValue":""},{"Name":"first_name","ObjectID":"9574f11a-006d-4421-9299-ab8d96e523bb","FieldType":"Text","IsPrimaryKey":false,"MaxLength":50,"Ordinal":1,"DefaultValue":""},{"Name":"email","ObjectID":"97f13524-0b6a-4ca4-8478-ec3239bcdf25","FieldType":"Text","IsPrimaryKey":true,"MaxLength":50,"Ordinal":0,"DefaultValue":""}],"data":[{"_CustomObjectKey":571,"email":"hone.watson+1001@github.com.au","first_name":"hone1001","last_name":"watson1001"}]}</script>
+    <title>Application</title>
+</head>
+<body>
+    <div id="main"></div>
+    <!-- BEGIN: Underscore Template Definition. -->
+    <script type="text/template" id="list-template">
+
+        <h2>This could be a template variable</h2>
+
+        <ul>
+            <% _.each( rc.data, function( item ){ %>
+                <% if ( item.first_name == "hone1001" ){ %>
+                    <li>
+                        <div>Name: <%= item.first_name %></div>
+                        <% if ( item.email ){ %>
+                            <div>Email: <%= item.email %></div>
+                        <% } %>
+                    </li>
+                <% } %>
+
+            <% }); %>
+        </ul>
+
+    </script>
+    <!-- END: Underscore Template Definition. -->
+    <script>
+        _.templateSettings.variable = "rc";
+
+        // Grab the HTML out of our template tag and pre-compile it.
+        var template = _.template(
+            $( "script#list-template" ).html()
+        );
+        $( "#main" ).append(
+            template( data )
+        );
+    </script>
+</body>
+</html>
